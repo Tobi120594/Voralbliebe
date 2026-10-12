@@ -77,4 +77,5 @@ function initGallery() {
   }, { passive: true });
 }
 
-document.addEventListener('DOMContentLoaded', initGallery);
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initGallery);
+else initGallery();

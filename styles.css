@@ -390,3 +390,6 @@ button:disabled { cursor: default; opacity: .6; }
 .gallery-zoom::after { transform: translate(-50%, -50%) rotate(90deg); }
 .gallery-count { display: block; margin-top: 5px; color: var(--muted); font-size: .8rem; font-weight: 400; }
 .gallery-direction[hidden] { display: none; }
+
+.gallery-grid.gallery-single { grid-template-columns: minmax(0, 380px); justify-content: center; }
+.gallery-direction { z-index: 2; display: grid; place-items: center; box-shadow: 0 3px 14px rgba(0,0,0,.2); }
