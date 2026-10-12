@@ -204,7 +204,7 @@ textarea.field{min-height:150px;resize:vertical}
     justify-content: center;
     gap: 24px;
     width: 100%;
-    max-width: 440px;
+    max-width: 600px;
     aspect-ratio: 4 / 5;
     margin: 0 auto;
     padding: 32px;
