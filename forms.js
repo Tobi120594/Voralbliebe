@@ -1,9 +1,36 @@
-async function submitAjax(form,alertEl){
-  const box=document.querySelector(alertEl); box.className='alert'; box.textContent='';
-  try{const r=await fetch(form.action,{method:'POST',body:new FormData(form)}); const data=await r.json(); box.textContent=data.message||'Vielen Dank!'; box.classList.add('show',data.ok?'success':'error'); if(data.ok){form.reset(); if(form.id==='checkoutForm'){localStorage.removeItem('voralbliebe-cart'); setTimeout(()=>location.reload(),1300)}}}
-  catch(e){box.textContent='Die Nachricht konnte gerade nicht gesendet werden. Bitte versuche es später noch einmal.';box.classList.add('show','error')}
+'use strict';
+
+async function submitAjax(form, alertSelector) {
+  const box = document.querySelector(alertSelector);
+  if (!box || form.dataset.submitting === 'true') return;
+  if (!form.checkValidity()) { form.reportValidity(); return; }
+  const button = form.querySelector('button[type="submit"]');
+  form.dataset.submitting = 'true';
+  if (button) button.disabled = true;
+  box.className = 'alert';
+  box.textContent = '';
+  try {
+    const response = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+    const data = await response.json();
+    const success = response.ok && data.ok === true;
+    box.textContent = data.message || (success ? 'Vielen Dank! Deine Anfrage wurde gesendet.' : 'Die Anfrage konnte nicht gesendet werden.');
+    box.classList.add('show', success ? 'success' : 'error');
+    if (success) {
+      form.reset();
+      if (form.id === 'checkoutForm' && typeof clearCart === 'function') clearCart();
+    }
+  } catch {
+    box.textContent = 'Die Nachricht konnte gerade nicht gesendet werden. Bitte versuche es später noch einmal oder kontaktiere uns direkt.';
+    box.classList.add('show', 'error');
+  } finally {
+    delete form.dataset.submitting;
+    if (button) button.disabled = false;
+  }
 }
-document.addEventListener('DOMContentLoaded',()=>{
-  const cf=document.querySelector('#contactForm'); if(cf)cf.addEventListener('submit',e=>{e.preventDefault();submitAjax(cf,'#contactAlert')});
-  const of=document.querySelector('#checkoutForm'); if(of)of.addEventListener('submit',e=>{e.preventDefault();submitAjax(of,'#orderAlert')});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const contact = document.querySelector('#contactForm');
+  if (contact) contact.addEventListener('submit', event => { event.preventDefault(); submitAjax(contact, '#contactAlert'); });
+  const order = document.querySelector('#checkoutForm');
+  if (order) order.addEventListener('submit', event => { event.preventDefault(); submitAjax(order, '#orderAlert'); });
 });

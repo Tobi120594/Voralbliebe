@@ -1,0 +1,93 @@
+VORALB LIEBE – TECHNISCHER PRÜFBERICHT
+Stand: 10.10.2026
+
+ERGEBNIS
+Die Darstellungsfehler stammen von unpassenden Dateiverweisen. Alle HTML-Seiten
+verlangten CSS, JavaScript und das Logo in assets-Unterordnern. Die gelieferten
+Dateien lagen jedoch gemeinsam im Hauptordner. Deshalb wurden Gestaltung,
+Bilder und Browserfunktionen nicht geladen.
+
+Auch index.html und index(1).html waren bytegleich: Beide enthielten noch die
+alte Navigation ohne Über mich und ohne den neuen Abschnitt.
+
+KORREKTUREN
+- Alle sieben HTML-Seiten verweisen jetzt auf styles.css, products.js, main.js,
+  forms.js und logo-voralbliebe.jpg direkt im gleichen Ordner.
+- Einheitliche Hauptnavigation: Startseite, Leistungen, Über mich, Onlineshop,
+  Kontakt. Der Über-mich-Link funktioniert auch von den Unterseiten aus.
+- Neuer Über-mich-Abschnitt mit Namens-, Text- und Fotoplatzhaltern.
+  Die dazugehörige Gestaltung steht jetzt in der gemeinsamen styles.css.
+- Der Footer enthält ebenfalls den Über-mich-Link. Aktuelles wurde aus der
+  Navigation entfernt; die vorhandene Inhaltsseite und Inhaltslinks bleiben.
+- Anker berücksichtigen den feststehenden Header.
+- Der Header nutzt bei mittleren Breiten rechtzeitig das mobile Menü. Sehr
+  kleine Breiten und lange Überschriften erhalten zusätzliche CSS-Regeln.
+- Das Menü meldet seinen geöffneten Zustand über aria-expanded. Der aktive
+  Anker wird markiert. Escape schließt Menü, Warenkorb oder Bestellanfrage.
+- Geschlossene Warenkorb- und Checkout-Bereiche sind nicht mehr per Tastatur
+  erreichbar. Geöffnete Dialoge führen den Tastaturfokus innerhalb des Dialogs
+  und geben ihn nach dem Schließen wieder zurück.
+- Beschädigtes JSON oder gesperrter Browserspeicher brechen den Seitenstart
+  nicht mehr ab. Entfernte Produkt-IDs und ungültige Mengen werden entfernt;
+  doppelte Artikel zusammengefasst.
+- Produkttexte werden vor dem Einfügen ins HTML maskiert. Summen werden anhand
+  von Centbeträgen berechnet. Ein leerer Warenkorb kann nicht abgesendet werden.
+- Formulare verhindern mehrfache gleichzeitige Anfragen und behandeln
+  Netzwerkfehler, ungültige Serverantworten und HTTP-Fehler ausdrücklich.
+- Nach erfolgreich bestätigtem Versand wird die Bestellanfrage zurückgesetzt
+  und der Warenkorb geleert; bei einem Fehler bleiben die Daten erhalten.
+- Datenschutzhinweis-Checkboxen besitzen jetzt einen Feldnamen und einen Link
+  zur Datenschutzseite. PHP prüft Pflichtfelder, Datentypen, Textlängen und
+  die Bestätigung zusätzlich auf dem Server.
+- Die unveränderte Platzhalter-Empfängeradresse führt ausdrücklich zu einer
+  Fehlermeldung. Betreffzeilen werden für UTF-8-E-Mail kodiert.
+- Interne Entwurfsformulierungen zur Skizze oder zur Umsetzung der Shop-Demo
+  wurden aus den sichtbaren Einleitungstexten entfernt.
+- README beschreibt die tatsächliche flache Ordnerstruktur und Einrichtung.
+
+DURCHGEFÜHRTE PRÜFUNGEN
+7 HTML-Seiten: Einheitliche Navigation, ein h1 pro Seite, deutsche Sprache,
+eindeutige IDs und erwartete Dialog-/Formularattribute.
+171 lokale Verweise: Ziele existieren im Paket.
+18 Anker: Zielabschnitte auf der jeweiligen Seite vorhanden.
+8 Formulare: Name, E-Mail und benannter Datenschutzhinweis vorhanden.
+7 Sitemap-Ziele: Vorhandene Seiten stimmen mit sitemap.xml überein.
+Logo: Bilddatei vollständig lesbar und unverändert übernommen.
+CSS: Regelblöcke und lokale Ressourcenverweise statisch geprüft.
+JavaScript: Syntax aller drei Skriptdateien geprüft.
+19 Funktionsszenarien: In einer simulierten Browserumgebung bestanden.
+
+Die Funktionsszenarien umfassten insbesondere fehlerhaften/gesperrten Speicher,
+veraltete Artikel-IDs, Mengen und Summen, Produktfilter und Suche, Menü-/Anker-
+zustände, Dialoge, Doppelklicks, fehlende Pflichtfelder und Server-/Netzwerkfehler.
+Dabei wurde keine E-Mail versendet und kein externer Dienst angesprochen.
+
+GRENZEN DER PRÜFUNG
+Die Browserfunktionen wurden mit simulierten DOM- und Serverantworten geprüft.
+Eine visuelle Kontrolle in einem echten Browser einschließlich verschiedener
+Bildschirmgrößen steht noch aus. Die PHP-Dateien wurden anhand ihres Codes
+geprüft; eine PHP-Laufzeitprüfung und der tatsächliche Mailversand auf dem
+Webspace stehen noch aus. Apache-Header und .htaccess benötigen ebenfalls eine
+Prüfung auf dem verwendeten Webspace. Das Paket wurde nicht veröffentlicht.
+
+NOCH OFFEN
+- In contact.php und order.php die echte Empfängeradresse eintragen und das
+  erlaubte Absender-/Mail-Setup auf dem PHP-Webspace einrichten.
+- Name, Foto und Texte im Über-mich-Bereich ergänzen.
+- Anschrift, Telefonnummer, E-Mail und Instagram enthalten noch Platzhalter.
+- Impressum und Datenschutz enthalten noch Platzhalter. Dieser Bericht ist
+  eine technische Prüfung; die Rechtstexte wurden nicht individualisiert.
+- Acht Shopartikel, Preise und Emojis sind weiterhin Beispieldaten.
+- Checkout bleibt eine Bestellanfrage. Eine Onlinezahlung ist nicht eingebaut.
+  Die übermittelten Artikel/Preise stammen aus dem Browser und müssen vor
+  einem Angebot geprüft werden.
+
+BEIBEHALTEN
+Logo, bestehende Leistungen, Aktuelles-Inhalte, Domainangaben, robots.txt,
+sitemap.xml und .htaccess. Die vorhandene Suchmaschinenfreigabe index,follow
+bleibt bestehen. header.inc ist weiterhin nur eine Dokumentationsdatei.
+
+ANWENDUNG
+ZIP vollständig entpacken und den Inhalt gemeinsam in den Website-Ordner
+kopieren. Gleichnamige Dateien ersetzen und die Startseite über index.html
+aufrufen. Kein assets-Ordner nötig. index(1).html ist nicht Teil dieses Pakets.

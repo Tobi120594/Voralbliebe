@@ -183,3 +183,119 @@ textarea.field{min-height:150px;resize:vertical}
   .testimonial{padding:32px 26px}
   .footer{padding-top:46px}
 }
+
+/* Über mich */
+#ueber-mich {
+    scroll-margin-top: 144px;
+  }
+
+  #ueber-mich .about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
+    align-items: center;
+    gap: clamp(24px, 5vw, 80px);
+  }
+
+  #ueber-mich .about-portrait {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    width: 100%;
+    max-width: 440px;
+    aspect-ratio: 4 / 5;
+    margin: 0 auto;
+    padding: 32px;
+    overflow: hidden;
+    border: 1px solid #e4d8cc;
+    border-radius: 28px;
+    background: linear-gradient(145deg, #f8f4ee 0%, #eee1de 100%);
+    color: #465b4c;
+    text-align: center;
+  }
+
+  #ueber-mich .about-photo-icon {
+    display: grid;
+    place-items: center;
+    width: 124px;
+    height: 124px;
+    border: 1px solid #c6ad7b;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.45);
+  }
+
+  #ueber-mich .about-portrait figcaption {
+    max-width: 250px;
+    line-height: 1.6;
+  }
+
+  #ueber-mich .about-portrait figcaption strong {
+    display: block;
+    font-size: 1.15rem;
+  }
+
+  #ueber-mich .about-portrait figcaption span {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.95rem;
+  }
+
+  #ueber-mich .about-copy {
+    min-width: 0;
+  }
+
+  #ueber-mich .about-copy h2 {
+    margin-top: 12px;
+  }
+
+  #ueber-mich .about-copy p {
+    margin: 0 0 20px;
+    line-height: 1.75;
+  }
+
+  #ueber-mich .about-copy .btn {
+    margin-top: 8px;
+  }
+
+  @media (max-width: 780px) {
+    #ueber-mich .about-grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 32px;
+    }
+
+    #ueber-mich .about-portrait {
+      max-width: 360px;
+      min-height: 320px;
+      aspect-ratio: auto;
+      padding: 24px;
+    }
+  }
+
+/* Anker, Tastaturbedienung und kleine Bildschirmbreiten */
+section[id], article[id] { scroll-margin-top: 110px; }
+#ueber-mich { scroll-margin-top: 144px; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+h1, h2, h3 { overflow-wrap: anywhere; }
+button:disabled { cursor: default; opacity: .6; }
+
+@media (min-width: 981px) and (max-width: 1100px) {
+  .navlinks { position: fixed; left: 16px; right: 16px; top: 88px; background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 20px; display: none; flex-direction: column; align-items: flex-start; box-shadow: var(--shadow); }
+  .navlinks.open { display: flex; }
+  .menu-btn { display: grid; }
+  .nav-actions .btn { display: none; }
+}
+
+@media (max-width: 360px) {
+  .nav { gap: 10px; }
+  .brand { gap: 8px; }
+  .brand-copy strong { font-size: 1.08rem; }
+  .nav-actions { gap: 8px; }
+  .icon-btn, .menu-btn { width: 40px; height: 40px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
+}
