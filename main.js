@@ -159,10 +159,11 @@ function renderProducts(target = '#productGrid', limit = null, filter = 'all', s
 
 function updateActiveNavigation() {
   const current = location.pathname.split('/').pop() || 'index.html';
-  const aboutActive = current === 'index.html' && location.hash === '#ueber-mich';
+  const navigationHash = ['#hochzeit', '#trockenblumen', '#straeusse', '#kraenze'].includes(location.hash) ? '#leistungen' : location.hash;
+  const homeAnchorActive = current === 'index.html' && $$('.navlinks a').some(link => link.getAttribute('href') === `index.html${navigationHash}` && navigationHash !== '');
   $$('.navlinks a').forEach(link => {
     const [page, anchor] = (link.getAttribute('href') || '').split('#');
-    const active = page === current && (anchor ? location.hash === `#${anchor}` : !aboutActive);
+    const active = page === current && (anchor ? navigationHash === `#${anchor}` : !homeAnchorActive);
     link.classList.toggle('active', active);
     if (active) link.setAttribute('aria-current', anchor ? 'location' : 'page');
     else link.removeAttribute('aria-current');
@@ -214,7 +215,6 @@ function init() {
   $('#checkoutClose')?.addEventListener('click', closeCheckout);
   $('#checkoutModal')?.addEventListener('click', event => { if (event.target === $('#checkoutModal')) closeCheckout(); });
   document.addEventListener('keydown', handleKeyboard);
-  renderProducts('#homeProducts', 4);
   if ($('#productGrid')) renderProducts();
   $$('.filter-btn').forEach(button => button.addEventListener('click', () => {
     $$('.filter-btn').forEach(filter => filter.classList.remove('active'));

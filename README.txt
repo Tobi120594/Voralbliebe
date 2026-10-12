@@ -1,73 +1,51 @@
-VORALB LIEBE – GEPRÜFTES WEBSITEPAKET
-Stand: 10.10.2026
+VORALB LIEBE – STARTSEITE MIT LEISTUNGEN UND GALERIE
+Stand: 12.10.2026
 
-ORDNERSTRUKTUR
-Alle HTML-, CSS-, JavaScript-, PHP- und Bilddateien dieses Pakets liegen direkt
-im selben Ordner. Ein assets-Unterordner ist für diese Fassung nicht nötig.
-Die Startdatei heißt index.html. Die mitgelieferte ursprüngliche index(1).html
-war eine identische Kopie der alten Startseite und gehört nicht in dieses Paket.
-
-EINRICHTEN
-1. ZIP-Datei vollständig entpacken.
-2. Alle Website-Dateien gemeinsam in den bisherigen Website-Ordner kopieren
-   und die gleichnamigen Dateien ersetzen. Beim Upload den Inhalt des entpackten
-   Ordners verwenden, damit index.html direkt im Website-Hauptverzeichnis liegt.
-3. Die Startseite über index.html bzw. die Internetadresse öffnen.
-   Wenn noch das alte Menü erscheint, die Seite mit Strg + F5 neu laden.
-4. CSS, JavaScript und Logo immer mit hochladen. Eine einzelne heruntergeladene
-   index.html außerhalb des Website-Ordners kann diese Ressourcen nicht laden.
+STARTSEITE
+1. Einleitung / Hero
+2. Leistungen: Hochzeitsschmuck, Trockenblumen, Sträuße, Kränze
+3. Über mich: vorhandener Text und Fotoplatzhalter
+4. Galerie: sechs mitgelieferte Inspirationsbilder mit vergrößerter Ansicht
+5. Onlineshop: Text-Teaser und Link zur separaten Shopseite
+6. Vorhandener Kontaktabschluss
 
 NAVIGATION
-Startseite, Leistungen, Über mich, Onlineshop, Kontakt.
-Über mich führt von jeder Seite zu index.html#ueber-mich.
-Der neue Abschnitt enthält ein Fotofeld und Textplatzhalter.
-Die bisherige Seite Aktuelles bleibt über ihre Inhalte verlinkt.
-header.inc ist lediglich eine Dokumentationsdatei. Der gemeinsame Header ist
-weiterhin direkt in jeder HTML-Datei enthalten.
+Startseite – Leistungen – Über mich – Galerie – Onlineshop – Kontakt.
+Leistungen, Über mich und Galerie führen zu Abschnitten auf der Startseite.
+Onlineshop und Kontakt öffnen die vorhandenen separaten Seiten.
+Die Navigation und die Links im Footer wurden auf den Unterseiten angepasst.
 
-FORMULARE
-In contact.php und order.php steht als Empfänger noch DEINE-EMAIL@BEISPIEL.DE.
-Diese Adresse durch die tatsächliche Empfängeradresse ersetzen. Zusätzlich
-muss der Webspace PHP und den Mailversand bereitstellen. Die angegebene
-Absenderadresse no-reply@voralbliebe.de muss zum erlaubten Mail-Setup passen.
-Das bloße Öffnen der HTML-Datei auf dem Computer stellt keinen PHP-Mailserver
-bereit. Die HTML-Seiten können lokal betrachtet werden; den Mailversand erst
-auf dem tatsächlichen Webspace mit eingerichteten Adressen testen.
+LEISTUNGEN
+Vier Bilder-Cards mit kurzen Beschreibungen. Die ausführlichen Angaben aus der
+bisherigen Leistungsseite lassen sich über »Mehr zu …« direkt aufklappen.
+Onlineshop und Aktuelles gehören nicht mehr zu den Leistungs-Cards.
+Die bisherige Adresse leistungen.html leitet zur Startseite weiter. Vorhandene
+Links zu Hochzeit, Trockenblumen, Sträußen und Kränzen behalten ihre Zielbereiche.
 
-Ohne konfigurierte Empfängeradresse wird jetzt eine Fehlermeldung ausgegeben,
-statt einen erfolgreichen Versand vorzutäuschen. Pflichtfelder, Datentypen,
-Textlängen und Datenschutzhinweis werden auf dem Server geprüft. Das bisherige
-versteckte Spam-Feld bleibt erhalten. Der Browser verhindert doppelte Klicks
-auf den Senden-Button während einer laufenden Anfrage.
+GALERIE
+gallery.js gehört ab jetzt zum Websitepaket und muss mit hochgeladen werden.
+Klick oder Enter öffnet das Bild; Buttons, Pfeiltasten und horizontales Wischen
+wechseln zwischen den Bildern. Escape, Schließen-Button oder Klick außerhalb
+schließen die Ansicht. Der Tastaturfokus kehrt zum ursprünglichen Bild zurück.
+Falls die vergrößerte Ansicht vom Browser nicht unterstützt wird oder JavaScript
+abgeschaltet ist, bleiben die direkten Bildlinks verwendbar.
+Die Galerie verwendet die vorhandenen KI-generierten Inspirationsmotive. Eigene
+Fotos können durch Austausch der Bildverweise und Beschreibungen ergänzt werden.
 
-SHOP
-Die Artikel stehen zentral in products.js. Die acht Produkte und ihre Preise
-sind weiterhin Beispieldaten; als Produktbilder dienen Emojis.
-Der Warenkorb bleibt lokal im Browser gespeichert. Ist der Browserspeicher
-nicht verfügbar, funktioniert er innerhalb der geöffneten Seite weiter.
-Checkout bedeutet hier Bestellanfrage, nicht Onlinezahlung. Die Anfrage enthält
-vom Browser übermittelte Artikel und Preise; vor einem Angebot prüfen.
-Eine Zahlungsanbindung ist nicht enthalten.
+SHOP UND KONTAKT
+Produktübersicht, Suche, Kategorien, Warenkorb und Bestellanfrage bleiben auf
+shop.html erhalten. Auf der Startseite gibt es keine Produktkarten mehr.
+Kontaktseite und PHP-Dateien sind unverändert übernommen. Die tatsächliche
+Empfängeradresse und der PHP-Mailversand müssen weiterhin eingerichtet werden.
+Onlinezahlungen sind nicht enthalten.
 
-INHALTE
-Name, Foto und persönliche Vorstellung im Über-mich-Abschnitt ergänzen.
-Anschrift, Telefon, E-Mail und Instagram enthalten weiterhin Platzhalter.
-Auch Impressum und Datenschutz enthalten Platzhalter und sind keine fertig
-individualisierten Rechtstexte. Produktdaten und Bilder vor Verwendung prüfen.
+UPLOAD
+ZIP vollständig entpacken. Den gesamten Inhalt des Ordners »Voralbliebe Website«
+in das Website-Hauptverzeichnis hochladen und gleichnamige Dateien ersetzen.
+Nicht nur die ZIP-Datei oder den umschließenden Ordner als Unterordner hochladen.
+index.html, styles.css, main.js und gallery.js müssen zusammen mit den Bildern
+und den übrigen Seiten im selben Verzeichnis liegen. Dateinamen der vorhandenen
+Bilder und der Allura-Schrift wurden beibehalten.
 
-SUCHMASCHINEN
-Die bestehende Einstellung index,follow und die Freigabe in robots.txt wurden
-beibehalten. sitemap.xml enthält die bestehenden Seiten einschließlich Aktuelles.
-Die Domainangaben lauten unverändert https://voralbliebe.de/.
-
-DATEIEN
-index.html, leistungen.html, shop.html, aktuelles.html, kontakt.html,
-impressum.html, datenschutz.html: Website-Seiten.
-styles.css: Gestaltung einschließlich Über-mich-Abschnitt und mobiler Darstellung.
-products.js, main.js, forms.js: Produkte, Warenkorb, Navigation und Formularversand.
-contact.php, order.php: Serverseitige Verarbeitung der Anfragen.
-logo-voralbliebe.jpg: Vorhandenes Logo, unverändert.
-robots.txt, sitemap.xml: Suchmaschinen-Dateien.
-.htaccess: Apache-Sicherheitsheader und deaktivierte Verzeichnisauflistung;
-kein Passwortschutz.
-Pruefbericht.txt: Festgestellte Fehler, Korrekturen und Grenzen der Prüfung.
+PRÜFUNG
+Details und Grenzen stehen in Pruefbericht.txt.
