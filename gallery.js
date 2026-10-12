@@ -10,17 +10,22 @@ function initGallery() {
   const closeButton = document.querySelector('#galleryDialogClose');
   const previousButton = document.querySelector('#galleryDialogPrev');
   const nextButton = document.querySelector('#galleryDialogNext');
+  let albums = {};
+  try { albums = JSON.parse(document.querySelector('#galleryAlbums')?.textContent || '{}'); } catch (error) { console.warn('Galerie-Alben konnten nicht geladen werden.', error); }
+  let activeImages = [];
   let currentIndex = 0;
   let returnFocus = null;
   let touchStart = null;
 
   function showImage(index) {
-    currentIndex = (index + links.length) % links.length;
-    const link = links[currentIndex];
-    image.src = link.href;
-    image.alt = link.querySelector('img')?.alt || link.dataset.caption || 'Florale Inspiration';
-    caption.textContent = link.dataset.caption || image.alt;
-    counter.textContent = `${currentIndex + 1} / ${links.length}`;
+    if (!activeImages.length) return;
+    currentIndex = (index + activeImages.length) % activeImages.length;
+    const photo = activeImages[currentIndex];
+    image.src = photo.src;
+    image.alt = photo.alt || photo.caption || 'Florale Inspiration';
+    caption.textContent = photo.caption || image.alt;
+    counter.textContent = `${currentIndex + 1} / ${activeImages.length}`;
+    previousButton.hidden = nextButton.hidden = activeImages.length < 2;
   }
 
   function restorePage() {
@@ -33,10 +38,13 @@ function initGallery() {
     if (dialog.open) dialog.close();
   }
 
-  links.forEach((link, index) => link.addEventListener('click', event => {
+  links.forEach((link) => link.addEventListener('click', event => {
     event.preventDefault();
     returnFocus = link;
-    showImage(index);
+    const configured = albums[link.dataset.gallery];
+    activeImages = Array.isArray(configured) ? configured.filter(photo => photo && typeof photo.src === 'string' && photo.src.trim()) : [];
+    if (!activeImages.length) activeImages = [{ src: link.href, alt: link.querySelector('img')?.alt, caption: link.dataset.caption }];
+    showImage(0);
     dialog.showModal();
     document.body.style.overflow = 'hidden';
     closeButton.focus();
@@ -59,6 +67,7 @@ function initGallery() {
     if (event.touches.length === 1) touchStart = { x: event.touches[0].clientX, y: event.touches[0].clientY };
     else touchStart = null;
   }, { passive: true });
+  image.addEventListener('touchcancel', () => { touchStart = null; }, { passive: true });
   image.addEventListener('touchend', event => {
     if (!touchStart || !event.changedTouches.length) return;
     const dx = event.changedTouches[0].clientX - touchStart.x;

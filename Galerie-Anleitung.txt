@@ -1,0 +1,15 @@
+GALERIE-ALBEN
+
+In index.html steht kurz vor gallery.js der Block mit id="galleryAlbums".
+Jeder Schlüssel gehört zu einer Kachel: hochzeit, natur, straeusse, kraenze, geschenke, gestaltung.
+Für weitere Bilder innerhalb der passenden eckigen Klammern einen Eintrag ergänzen:
+{ "src": "mein-bild.jpg", "alt": "Beschreibung des Bildes", "caption": "Bildunterschrift" }
+Einträge mit Kommas trennen; nach dem letzten Eintrag kein Komma.
+Bilddateien in denselben Ordner wie index.html legen. Groß-/Kleinschreibung beachten.
+Die sichtbare Bildanzahl in der jeweiligen gallery-count ebenfalls aktualisieren.
+Aktuell enthält das Kranz-Album das bisherige Titelbild plus Kranz 1 bis Kranz 4.
+Andere Alben enthalten zunächst ihr bisheriges Bild.
+
+UPLOAD
+Den Inhalt von Voralbliebe Website hochladen, sodass index.html direkt im Veröffentlichungsordner liegt.
+Alle vorhandenen Dateien beibehalten und geänderte Dateien ersetzen.

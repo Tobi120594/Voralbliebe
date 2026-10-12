@@ -384,3 +384,9 @@ button:disabled { cursor: default; opacity: .6; }
 }
 @media (max-width: 360px) { .gallery-grid { grid-template-columns: minmax(0, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .gallery-item:hover img { transform: none; } }
+
+/* Plus als zwei Linien: unabhängig von Schrift und Grundlinie mittig. */
+.gallery-zoom::before, .gallery-zoom::after { content: ""; position: absolute; top: 50%; left: 50%; width: 14px; height: 2px; background: currentColor; border-radius: 2px; transform: translate(-50%, -50%); }
+.gallery-zoom::after { transform: translate(-50%, -50%) rotate(90deg); }
+.gallery-count { display: block; margin-top: 5px; color: var(--muted); font-size: .8rem; font-weight: 400; }
+.gallery-direction[hidden] { display: none; }
