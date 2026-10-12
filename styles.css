@@ -42,7 +42,7 @@ p{margin:0 0 1rem;color:var(--muted)}
 .brand img{width:58px;height:58px;border-radius:50%;object-fit:cover;border:1px solid var(--gold-soft)}
 .brand-copy{display:flex;flex-direction:column;line-height:1.05}
 .brand-copy strong{font-family:Georgia,"Times New Roman",serif;font-size:1.25rem;font-weight:500;color:var(--green-deep)}
-.brand-copy span{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rose-deep)}
+.brand-copy > span{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rose-deep)}
 .navlinks{display:flex;align-items:center;gap:26px;font-size:.94rem}
 .navlinks a{position:relative}
 .navlinks a::after{content:"";position:absolute;left:0;bottom:-7px;height:1px;width:0;background:var(--gold);transition:.25s}
@@ -175,7 +175,7 @@ textarea.field{min-height:150px;resize:vertical}
 }
 @media (max-width:640px){
   .section{padding:68px 0}.section-sm{padding:48px 0}
-  .brand-copy span{display:none}.brand{min-width:auto}.brand img{width:50px;height:50px}
+  .brand-copy > span{display:none}.brand{min-width:auto}.brand img{width:50px;height:50px}
   .hero{padding-top:24px}.hero-grid{gap:24px}.hero-copy{padding-bottom:4px}.hero-visual{min-height:390px}.hero-frame{left:12px;border-radius:36% 36% 22px 22px}.hero-badge{left:0;bottom:18px;max-width:190px}
   .cards-grid,.service-grid,.products-grid,.article-grid,.feature-strip,.footer-grid,.form-grid{grid-template-columns:1fr}
   .newsletter{padding:28px}.newsletter form{flex-direction:column}
@@ -298,4 +298,31 @@ button:disabled { cursor: default; opacity: .6; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; }
+}
+
+/* Markenname: Voralb und Liebe mit unterschiedlichen Schriften */
+.brand-copy strong {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.22em;
+  white-space: nowrap;
+}
+
+@font-face {
+  font-family: "Allura";
+  src: url("Allura-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.brand-copy strong .brand-liebe {
+  display: inline;
+  font-family: "Allura", cursive;
+  font-size: 1.60em;
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--gold);
+  text-transform: none;
+  letter-spacing: normal;
 }
